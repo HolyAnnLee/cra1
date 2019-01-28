@@ -1,0 +1,7 @@
+# eslint忽略文件
+
+/node_modules
+/build
+/config
+/dll
+/scripts
