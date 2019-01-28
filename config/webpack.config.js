@@ -327,6 +327,7 @@ module.exports = function(webpackEnv) {
             },
           ],
           include: paths.appSrc,
+          exclude: paths.appNodeModules,
         },
         {
           // "oneOf" will traverse all following loaders until one will
