@@ -28,6 +28,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 // 项目打包进度条
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 
+//Dll
+const DllReferencePlugin = require('webpack/lib/DllReferencePlugin');
+// 将dll.js文件插入打包后的页面
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
+
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -43,6 +48,12 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+
+
+
+// console.log('***********************')
+// // console.log(env)
+// console.log('***********************')
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -320,6 +331,7 @@ module.exports = function(webpackEnv) {
             },
           ],
           include: paths.appSrc,
+          exclude: paths.appNodeModules,
         },
         {
           // "oneOf" will traverse all following loaders until one will
@@ -520,6 +532,11 @@ module.exports = function(webpackEnv) {
       new BundleAnalyzerPlugin(),
       // 项目打包进度条
       new ProgressBarWebpackPlugin(),
+      // Dll
+      new DllReferencePlugin({
+        context: __dirname,
+        manifest: require(path.join(paths.appDll, 'react.manifest.json')),
+      }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
@@ -546,6 +563,10 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
+      // 将dll.js文件插入打包后的页面
+      new AddAssetHtmlWebpackPlugin([
+        { outputPath: './static/dll', publicPath: './static/dll',filepath: path.join(paths.appDll, '*.dll.js') },
+      ]),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       isEnvProduction &&
