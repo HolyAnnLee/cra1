@@ -23,6 +23,10 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+// 分析项目打包情况
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// 项目打包进度条
+const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
@@ -512,6 +516,10 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
+      // 分析项目打包情况
+      new BundleAnalyzerPlugin(),
+      // 项目打包进度条
+      new ProgressBarWebpackPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
