@@ -5,5 +5,5 @@ build/
 config/
 dll/
 scripts/
-src/
-#src/serviceWorker.js
+#src/
+src/serviceWorker.js

@@ -10718,7 +10718,6 @@ webidl-conversions@^4.0.2:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
   integrity sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
 
-<<<<<<< HEAD
 webpack-bundle-analyzer@^3.0.3:
   version "3.0.3"
   resolved "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-3.0.3.tgz#dbc7fff8f52058b6714a20fddf309d0790e3e0a0"
@@ -10736,7 +10735,7 @@ webpack-bundle-analyzer@^3.0.3:
     mkdirp "^0.5.1"
     opener "^1.5.1"
     ws "^6.0.0"
-=======
+
 webpack-cli@^3.2.1:
   version "3.2.1"
   resolved "http://registry.npm.taobao.org/webpack-cli/download/webpack-cli-3.2.1.tgz#779c696c82482491f0803907508db2e276ed3b61"
@@ -10755,7 +10754,6 @@ webpack-cli@^3.2.1:
     supports-color "^5.5.0"
     v8-compile-cache "^2.0.2"
     yargs "^12.0.4"
->>>>>>> c9eaede1dcb9aea0cf75666d7498b5f12bb952a4
 
 webpack-dev-middleware@3.4.0:
   version "3.4.0"
